@@ -11,4 +11,24 @@ before_install:
 script:
   - docker run coding4startups/docker-startup npm run test -- --coverage
 
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-3"
+  app: "docker_startup"
+  env: "DockerStartup-env"
+  bucket_name: "elasticbeanstalk-eu-west-3-634261840555"
+  bucket_path: "docker_startup"
+  on:
+    branch: master
+
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRECT_KEY"
+
+
+
+
+
+
+
 
